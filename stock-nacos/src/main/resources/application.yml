@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: stock-nacos
+  cloud:
+    nacos:
+      server-addr: 192.168.6.108:8848
+      discovery:
+        username: nacos
+        password: nacos
+        namespace: dev
+        ephemeral: false #是否时永久实例，如果宕机了也不会删除实例
+logging:
+  level:
+    com.itdom.cloud: debug
+  file:
+    path: ./logs/stock-nacos
+    name: ${logging.file.path}/${spring.application.name}.log

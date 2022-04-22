@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: order
+logging:
+  level:
+    com.itdom.cloud: debug
+  file:
+    path: ./logs/order
+    name: ${logging.file.path}/${spring.application.name}.log

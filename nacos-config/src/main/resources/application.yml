@@ -1,0 +1,6 @@
+logging:
+  level:
+    com.itdom.cloud: debug
+  file:
+    path: ./logs/nacos-config
+    name: ${logging.file.path}/${spring.application.name}.log
