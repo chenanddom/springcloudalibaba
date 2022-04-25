@@ -18,7 +18,19 @@ spring:
         # nacos的默认的配置文件的格式是properties，如果要改就需要使用file-extension
         file-extension: yaml
         namespace: dev
-        group:
+        group: itdom
+        shared-configs:
+          - data-id: com.itdom.common.properties
+            refresh: true
+          - data-id: com.itdom.common02.properties
+            refresh: true
+#           group: DEFAULT-GROUP 默认就是DEFAULT GROUP
+        extension-configs[0]:
+           data-id: com.itdom.common03.properties
+           refresh: true
+#           以上share配置和extention配置的运行结果如下:
+#2022-04-22 16:13:14.609 DEBUG 16032 --- [           main] com.itdom.cloud.ConfigApplication        : username:zhangsan-group,age:28,gender:female,email:772571631@qq.com,config:extention-config
+
 
 # 配置文件的优先级(优先级大的会覆盖优先级别小的，并且形成互补)
 # profile>默认的配置文件>extention-configs(下表越大优先级越大)>shared-configs(下标越大优先级越大)

@@ -1,10 +1,10 @@
 server:
-  port: 8085
+  port: 8086
 
 spring:
   application:
     # nacos会根据服务的名称回去配置文件
-    name: com.nacos.config
+    name: sentinel-sample
   profiles:
     active: dev
   cloud:
@@ -14,20 +14,20 @@ spring:
       password: nacos
       discovery:
         namespace: dev
-      config:
-        # nacos的默认的配置文件的格式是properties，如果要改就需要使用file-extension
-        file-extension: yaml
-        namespace: dev
-        group: itdom
-        shared-configs:
-          - data-id: com.itdom.common.properties
-            refresh: true
-          - data-id: com.itdom.common02.properties
-            refresh: true
-#           group: DEFAULT-GROUP 默认就是DEFAULT GROUP
-        extension-configs[0]:
-           data-id: com.itdom.common03.properties
-           refresh: true
+#      config:
+#        # nacos的默认的配置文件的格式是properties，如果要改就需要使用file-extension
+#        file-extension: yaml
+#        namespace: dev
+#        group: itdom
+#        shared-configs:
+#          - data-id: com.itdom.common.properties
+#            refresh: true
+#          - data-id: com.itdom.common02.properties
+#            refresh: true
+#        #           group: DEFAULT-GROUP 默认就是DEFAULT GROUP
+#        extension-configs[0]:
+#          data-id: com.itdom.common03.properties
+#          refresh: true
 #           以上share配置和extention配置的运行结果如下:
 #2022-04-22 16:13:14.609 DEBUG 16032 --- [           main] com.itdom.cloud.ConfigApplication        : username:zhangsan-group,age:28,gender:female,email:772571631@qq.com,config:extention-config
 

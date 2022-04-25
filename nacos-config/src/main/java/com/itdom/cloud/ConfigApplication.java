@@ -19,7 +19,8 @@ public class ConfigApplication {
             String age = context.getEnvironment().getProperty("user.age");
             String gender = context.getEnvironment().getProperty("user.gender");
             String email = context.getEnvironment().getProperty("user.email");
-            logger.debug("username:{},age:{},gender:{},email:{}", username, age, gender,email);
+            String config = context.getEnvironment().getProperty("user.config");
+            logger.debug("username:{},age:{},gender:{},email:{},config:{}", username, age, gender,email,config);
            TimeUnit.SECONDS.sleep(1);
         }
     }
