@@ -1,0 +1,73 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    # nacos会根据服务的名称回去配置文件
+    name: seata-stock
+  profiles:
+    active: dev
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/seata-stock?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: root@123
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+      discovery:
+        namespace: dev
+    alibaba:
+      seata:
+        #配置seata的事务分组，实现一个高可用
+        tx-service-group: default_tx_group
+mybatis-plus:
+  mapper-locations: classpath:com/itdom/cloud/stock/mapper/*Mapper.xml
+  type-aliases-package: com.itdom.cloud.stock.model
+  configuration:
+    map-underscore-to-camel-case: true
+#      config:
+#        # nacos的默认的配置文件的格式是properties，如果要改就需要使用file-extension
+#        file-extension: yaml
+#        namespace: dev
+#        group: itdom
+#        shared-configs:
+#          - data-id: com.itdom.common.properties
+#            refresh: true
+#          - data-id: com.itdom.common02.properties
+#            refresh: true
+##           group: DEFAULT-GROUP 默认就是DEFAULT GROUP
+#        extension-configs[0]:
+#           data-id: com.itdom.common03.properties
+#           refresh: true
+#           以上share配置和extention配置的运行结果如下:
+#2022-04-22 16:13:14.609 DEBUG 16032 --- [           main] com.itdom.cloud.ConfigApplication        : username:zhangsan-group,age:28,gender:female,email:772571631@qq.com,config:extention-config
+
+
+# 配置文件的优先级(优先级大的会覆盖优先级别小的，并且形成互补)
+# profile>默认的配置文件>extention-configs(下表越大优先级越大)>shared-configs(下标越大优先级越大)
+
+seata:
+  registry:
+    #    配置注册中心
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+      group: SEATA_GROUP
+      application: seata-server
+      namespace: dev
+  config:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+      group: SEATA_GROUP
+      application: seata-server
+      namespace: dev

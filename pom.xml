@@ -9,6 +9,8 @@
         <module>stock-nacos</module>
         <module>nacos-config</module>
         <module>sentinel-sample</module>
+        <module>seata-order</module>
+        <module>seata-stock</module>
     </modules>
     <groupId>com.itdom.cloud</groupId>
     <artifactId>springcloudalibaba</artifactId>
